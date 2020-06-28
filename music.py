@@ -1,9 +1,9 @@
-token = "NzI2NDg2OTU2NDQzNDM1MDg5.Xvd_yw.-VjxkBQmyh7XbR3TiUurcfuMxN4"
-
 import discord
 
-
 client = discord.Client()
+
+with open(".token") as file:
+    token=file.read()
 
 @client.event
 async def on_ready():
