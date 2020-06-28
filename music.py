@@ -13,8 +13,11 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
-    if message.channel == None:
+    if message.guild == False:
         return
+
+    if message.content=="checkchannel":
+        await message.channel.send('{.channel}'.format(message))
 
     if message.content.startswith('hello'):
         await message.channel.send('Hello!')
