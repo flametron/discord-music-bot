@@ -1,6 +1,8 @@
 import discord
+from discord.ext import commands
 
-client = discord.Client()
+
+client = commands.Bot("!")
 
 with open(".token") as file:
     token=file.read()
@@ -21,5 +23,15 @@ async def on_message(message):
 
     if message.content.startswith('hello'):
         await message.channel.send('Hello!')
+
+
+    await client.process_commands(message)
+
+
+@client.command(pass_context=True)
+async def ping(ctx):
+    if ctx.guild == None:
+        return
+    await ctx.channel.send("{}".format(ctx))
 
 client.run(token)
