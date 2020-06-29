@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 
 
-client = commands.Bot("!")
+client = commands.Bot("a!")
 
 with open(".token") as file:
     token=file.read()
@@ -28,10 +28,10 @@ async def on_message(message):
     await client.process_commands(message)
 
 
-@client.command(pass_context=True)
-async def ping(ctx):
+@client.command(name="PP")
+async def ping(ctx,*arg):
     if ctx.guild == None:
         return
-    await ctx.channel.send("{}".format(ctx))
+    await ctx.channel.send("Pong!"+str(len(arg)))
 
 client.run(token)
