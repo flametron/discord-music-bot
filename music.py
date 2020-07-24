@@ -28,6 +28,7 @@ async def on_message(message):
     await client.process_commands(message)
 
 
+
 @client.event
 async def on_raw_reaction_add(pload):
     if(getMIDforGIDEmo(pload.guild_id)==str(pload.message_id)):
